@@ -1,5 +1,6 @@
 package com.naivebayes.model;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -20,7 +21,7 @@ public class ReadConfig {
 	public void loadProperties(){
 		try {
 			prop = new Properties();
-			InputStream is = RegionLevelPredictor.class.getResourceAsStream("./config1.properties");
+			InputStream is=new FileInputStream("src/main/resources/config1.properties");
 			prop.load(is);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

@@ -102,7 +102,7 @@ public class RegionLevelPredictor {
 	private static void generateRegionCsvs() throws FileNotFoundException, JSONException, IOException, ParseException {
 		Properties prop = null;
 		prop = new Properties();
-		InputStream is = RegionLevelPredictor.class.getResourceAsStream("./config1.properties");
+		InputStream is=new FileInputStream("src/main/resources/config1.properties");
 		prop.load(is);
 		TRAIN_DB_REGION_URL = prop.getProperty("RegionTrainDataURL");
 		TEST_DB_REGION_URL = prop.getProperty("RegionTestDataURL");

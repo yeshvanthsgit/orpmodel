@@ -70,7 +70,7 @@ public class SiteLevelPredictor {
 	private static void generateCsvs() throws Exception {
 		Properties prop = null;
 		prop = new Properties();
-		InputStream is = SiteLevelPredictor.class.getResourceAsStream("./config1.properties");
+		InputStream is=new FileInputStream("src/main/resources/config1.properties");
 		prop.load(is);
 		UPDATE_DATA_SITE = prop.getProperty("UpdateTestDataSite");
 		PATH_TO_SAVE_UPDATED_SITE = prop.getProperty("PathToSaveUpdatedSite");
