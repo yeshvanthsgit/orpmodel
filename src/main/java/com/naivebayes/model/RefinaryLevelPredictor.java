@@ -2,6 +2,7 @@ package com.naivebayes.model;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -52,7 +53,8 @@ public class RefinaryLevelPredictor {
 	public static void predict() throws Exception {
 		Properties prop = null;
 		prop = new Properties();
-		InputStream is = RefinaryLevelPredictor.class.getResourceAsStream("./config1.properties");
+		//InputStream is = RefinaryLevelPredictor.class.getResourceAsStream("./config1.properties");
+		InputStream is=new FileInputStream("src/main/resources/config1.properties");
 		prop.load(is);
 		PATH_TO_SAVE_UPDATED_REFINERY = prop.getProperty("PathToSaveUpdatedRefinery");
 		UPDATE_DATA_TEST_DB_REFINARY = prop.getProperty("UpdateDataTestDBRefinery");
