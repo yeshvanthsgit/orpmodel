@@ -1,27 +1,16 @@
 package com.naivebayes.model;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import org.json.simple.JSONArray;
-
-import org.apache.commons.io.IOUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
-import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
-import com.mongodb.MongoException;
-import com.mongodb.WriteResult;
-import com.mongodb.util.JSON;
 
 public class PersistJsonToMongo {
 
@@ -40,7 +29,7 @@ public class PersistJsonToMongo {
 			
 			String sitePerformance = null;
 
-			DBCollection table = db.getCollection("Refinarycoll");
+			DBCollection table = db.getCollection("RefinaryCollection");
 			ArrayList asd = (ArrayList) table.distinct("Site_Name");
 			Iterator itr = asd.iterator();
 
@@ -96,7 +85,7 @@ public class PersistJsonToMongo {
 						check = false;
 					}
 					
-					DBCollection table1 = db.getCollection("Sitecoll");
+					DBCollection table1 = db.getCollection("SiteCollection");
 
 					if (check) {
 						if(badCount > 0){
@@ -146,7 +135,7 @@ public class PersistJsonToMongo {
 					BasicDBObject setQuery = new BasicDBObject();
 					setQuery.append("$set", updateFields);
 					
-					table1.updateMulti(searchQuery, setQuery);
+					table1.findAndModify(searchQuery, setQuery);
 				}
 				
 				
@@ -161,7 +150,7 @@ public class PersistJsonToMongo {
 			String regionPerformace = null;
 
 			boolean test = true;
-			DBCollection table = db.getCollection("Sitecoll");
+			DBCollection table = db.getCollection("SiteCollection");
 			ArrayList asd = (ArrayList) table.distinct("Region_Name");
 			Iterator itr = asd.iterator();
 
@@ -218,7 +207,7 @@ public class PersistJsonToMongo {
 						check = false;
 					}
 					
-					DBCollection table1 = db.getCollection("Regioncoll");
+					DBCollection table1 = db.getCollection("RegionCollection");
 
 					if (check) {
 						if(badCount > 0){
@@ -276,7 +265,7 @@ public class PersistJsonToMongo {
 					BasicDBObject setQuery = new BasicDBObject();
 					setQuery.append("$set", updateFields);
 					
-					table1.updateMulti(searchQuery, setQuery);
+					table1.findAndModify(searchQuery, setQuery);
 				}
 				
 				
