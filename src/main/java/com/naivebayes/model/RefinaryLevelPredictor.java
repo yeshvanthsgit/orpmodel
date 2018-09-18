@@ -186,8 +186,10 @@ public class RefinaryLevelPredictor {
 
             while ((readLine = b.readLine()) != null) {
             	if(readLine.contains("@attribute")){
-            		totalStr += attributesList.get(count) + "\n";
-            		count++;
+            		if(attributesList.size() > count) {
+            			totalStr += attributesList.get(count) + "\n";
+                		count++;
+            		}
             	}else{
             		totalStr += readLine + "\n";
             	}
